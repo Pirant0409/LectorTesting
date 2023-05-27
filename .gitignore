@@ -4,3 +4,4 @@ __pycache__/
 parsers/__pycache__/
 books/
 Examples/
+env/
