@@ -5,3 +5,6 @@ parsers/__pycache__/
 books/
 Examples/
 env/
+build/
+dist/
+lector.egg-info/
