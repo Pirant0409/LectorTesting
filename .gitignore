@@ -8,3 +8,6 @@ env/
 build/
 dist/
 lector.egg-info/
+Test/unit_testing/env/
+Test/unit_testing/readers/__pycache__/
+Test/unit_testing/readers/epub/*
