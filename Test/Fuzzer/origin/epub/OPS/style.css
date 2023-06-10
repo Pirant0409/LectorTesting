@@ -1,0 +1,524 @@
+a:link {
+    color: #004080;
+    text-decoration: underline
+    }
+a:visited {
+    color: #800080;
+    text-decoration: underline
+    }
+body {
+    font-size: 1em;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0
+    }
+body.Margin {
+    margin-bottom: 0;
+    margin-left: 0.5cm;
+    margin-right: 0.5cm;
+    margin-top: 0
+    }
+body.Nomargin {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0
+    }
+div.DivMode {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    text-align: center
+    }
+div.Graphics-template {
+    float: none;
+    text-align: center
+    }
+h1.Heading-1 {
+    font-size: 1.1875em;
+    font-weight: bold;
+    margin-bottom: 0.947368em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    orphans: 2;
+    text-align: center;
+    text-indent: 0;
+    widows: 2
+    }
+h2.Heading-2 {
+    font-size: 1.0625em;
+    font-weight: bold;
+    margin-bottom: 0.705327em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.705327em;
+    orphans: 2;
+    text-align: center;
+    text-indent: 0;
+    widows: 2
+    }
+h2.P35 {
+    font-size: 1.0625em;
+    font-weight: bold;
+    margin-bottom: 0.705327em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.705327em;
+    orphans: 2;
+    page-break-after: auto;
+    page-break-before: auto;
+    text-align: center;
+    text-indent: 0;
+    widows: 2
+    }
+img.ImgModeHeight {
+    height: 100%;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0
+    }
+img.image1-template {
+    width: 39.606019%
+    }
+img.image10 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 65.309621%
+    }
+img.image11 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 85.136776%
+    }
+img.image12 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 66.516677%
+    }
+img.image14 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 56.84594%
+    }
+img.image17 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 84.658239%
+    }
+img.image21 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 64.102564%
+    }
+img.image24 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 66.995215%
+    }
+img.image25 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 70.14499%
+    }
+img.image28 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 63.774016%
+    }
+img.image3 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 60.952789%
+    }
+img.image3-template {
+    width: 29.994061%
+    }
+img.image4 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 64.338262%
+    }
+img.image5 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 65.788158%
+    }
+img.image6 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 64.581101%
+    }
+img.image7 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 62.888365%
+    }
+img.image8 {
+    border: none;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0.153cm;
+    padding-left: 0.28cm;
+    padding-right: 0.28cm;
+    padding-top: 0.153cm;
+    text-align: center;
+    width: 89.979287%
+    }
+p.P1-template {
+    font-size: 0.875em;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    text-align: center
+    }
+p.P15 {
+    font-size: 1em;
+    margin-bottom: 0.318898em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.318898em;
+    orphans: 2;
+    text-align: center;
+    text-indent: 0;
+    widows: 2
+    }
+p.P17 {
+    font-size: 1em;
+    margin-bottom: 0.318898em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.318898em;
+    orphans: 0;
+    text-align: justify;
+    text-indent: 0;
+    widows: 0
+    }
+p.P18 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 0.318898em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.318898em;
+    orphans: 2;
+    text-align: center;
+    text-indent: 0;
+    widows: 2
+    }
+p.P19 {
+    color: #000;
+    font-size: 0.9375em;
+    font-weight: bold;
+    margin-bottom: 0.340157em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.340157em;
+    orphans: 2;
+    text-align: justify;
+    text-indent: 0;
+    widows: 2
+    }
+p.P2 {
+    font-size: 1em;
+    margin-bottom: 0.318898em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.318898em;
+    orphans: 2;
+    text-align: center;
+    text-indent: 1.771654em;
+    widows: 2
+    }
+p.P2-template {
+    font-size: 0.75em;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.425197em;
+    text-align: center
+    }
+p.P20 {
+    color: #000;
+    font-size: 1em;
+    font-style: italic;
+    margin-bottom: 0.318898em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.318898em;
+    orphans: 2;
+    text-align: center;
+    text-indent: 0;
+    widows: 2
+    }
+p.P21 {
+    font-size: 1em;
+    margin-bottom: 0.318898em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.318898em;
+    orphans: 2;
+    text-align: justify;
+    text-indent: 1.771654em;
+    widows: 2
+    }
+p.P24 {
+    font-size: 1em;
+    margin-bottom: 0.318898em;
+    margin-left: 1.771654em;
+    margin-right: 0;
+    margin-top: 0.318898em;
+    orphans: 2;
+    text-align: justify;
+    text-indent: 0;
+    widows: 2
+    }
+p.P25 {
+    color: #000;
+    font-size: 0.9375em;
+    margin-bottom: 0.340157em;
+    margin-left: 1.800945em;
+    margin-right: 0;
+    margin-top: 0.340157em;
+    orphans: 2;
+    text-align: justify;
+    text-indent: 0;
+    widows: 2
+    }
+p.P29 {
+    font-size: 1em;
+    margin-bottom: 0.318898em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.318898em;
+    orphans: 0;
+    text-align: justify;
+    text-indent: 1.771654em;
+    widows: 0
+    }
+p.P3-template {
+    font-size: 0.625em;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    text-align: center
+    }
+p.P4-template {
+    font-size: 0.75em;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    text-align: center
+    }
+p.P6 {
+    font-size: 1em;
+    font-style: italic;
+    margin-bottom: 0.318898em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.318898em;
+    orphans: 2;
+    text-align: justify;
+    text-indent: 1.771654em;
+    widows: 2
+    }
+p.Standard-template {
+    font-size: 0.75em;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0
+    }
+p.intertitres {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 0.749409em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.749409em;
+    orphans: 2;
+    text-align: center;
+    text-indent: 0;
+    widows: 2
+    }
+p.titre_adresse-template {
+    font-size: 0.5em;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    text-align: center
+    }
+p.titre_auteur-template {
+    font-size: 1.5em;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.235039em;
+    text-align: center;
+    text-indent: 0
+    }
+p.titre_date_roman-template {
+    font-size: 0.625em;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.510236em;
+    text-align: center
+    }
+p.titre_livre-template {
+    font-size: 1.625em;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.436099em;
+    text-align: center
+    }
+p.titre_note-template {
+    font-size: 0.75em;
+    font-style: italic;
+    margin-bottom: 0;
+    margin-left: 2.362205em;
+    margin-right: 2.362205em;
+    margin-top: 0.944882em;
+    text-align: center;
+    text-indent: 0
+    }
+span.Internet-link {
+    color: #004080;
+    text-decoration: underline
+    }
+span.T1 {
+    font-size: 0.9375em
+    }
+span.T10 {
+    font-size: 0.9375em;
+    font-weight: bold
+    }
+span.T3 {
+    font-style: italic
+    }
+span.T4 {
+    font-style: italic;
+    font-weight: bold
+    }
+span.T5 {
+    font-size: smaller;
+    vertical-align: text-top
+    }
+span.T6 {
+    font-weight: bold
+    }
+span.T8 {
+    font-size: 0.9375em
+    }
+span.T9 {
+    font-size: 0.9375em;
+    text-decoration: underline
+    }

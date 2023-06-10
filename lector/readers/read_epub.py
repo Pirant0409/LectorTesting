@@ -69,7 +69,7 @@ class EPUB:
                 if packagefile:
                     logger.info('Using presumptive package file: ' + self.book_filename)
                     break
-
+        
         packagefile_data = self.zip_file.read(packagefile)
         self.opf_dict = xmltodict.parse(packagefile_data)
 

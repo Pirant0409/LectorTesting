@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="BookId">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:title>La Vallée de la Peur</dc:title>
+    <dc:creator opf:role="aut">Arthur Conan Doyle</dc:creator>
+    <dc:language>fr</dc:language>
+    <dc:description>Sherlock Holmes vient à peine de déchiffrer un message codé le prévenant qu'un certain Douglas de Birlstone Manor House, est en grave danger, qu'il apprend par l'inspecteur MacDonald de Scotland Yard que Douglas vient d'être affreusement assassiné. Par le signataire du message, Sherlock Holmes sait que derrière cette affaire se trouve son ennemi juré : le professeur Moriarty, criminel génial et machiavélique. Accompagné de son fidèle Watson, Holmes se précipite à Birlstone... Rempli d'intrigues et d'action, La Vallée de la peur, où l'on voit Sherlock Holmes se mesurer avec Moriatry adversaire en tous points à sa taille, est sans doute le meilleur roman de Conan Doyle.</dc:description>
+    <dc:date opf:event="creation">2011-00-26</dc:date>
+    <dc:identifier id="BookId">urn:uuid:8A768A9F-5559-3BAA-84E4-D39A4D249D51</dc:identifier>
+  <meta name="Amanuensis:notes" content="Édition illustrée"/>
+    <meta name="office:version" content="OpenOffice.org/3.2$Win32 OpenOffice.org_project/320m18$Build-9502"/>
+    <meta name="Amanuensis:title" content="LA VALLÉE DE LA PEUR"/>
+    <meta name="office:last-modification-date" content="2011-01-23T19:05:33.07"/>
+    <meta name="office:creation-date" content="2004-02-19T21:06:00"/>
+    <meta name="Amanuensis:book-date" content="septembre 1914 – mai 1915"/>
+    <meta name="amanuensis:generator" content="Amanuensis 1.0"/>
+    <meta name="amanuensis:xhtml-creation-date" content="2011-00-26T20:53:10"/>
+    </metadata>
+  <manifest>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+    <item id="css1" href="style.css" media-type="text/css"/>
+    <item id="img1" href="cover.jpg" media-type="image/jpeg"/>
+    <item id="img2" href="100000000000013F000000131EE88A8E.jpg" media-type="image/jpeg"/>
+    <item id="img3" href="10000000000000E8000000E7DAF0D116.jpg" media-type="image/jpeg"/>
+    <item id="img4" href="10000000000000FC0000018A94277A90.jpg" media-type="image/jpeg"/>
+    <item id="img5" href="100000000000010A00000171154AC970.jpg" media-type="image/jpeg"/>
+    <item id="img6" href="1000000000000110000001712BDB06C3.jpg" media-type="image/jpeg"/>
+    <item id="img7" href="100000000000010B000001711CBAA8A3.jpg" media-type="image/jpeg"/>
+    <item id="img8" href="10000000000001040000017A47D0CE99.jpg" media-type="image/jpeg"/>
+    <item id="img9" href="10000000000001740000010AC4E95A9B.jpg" media-type="image/jpeg"/>
+    <item id="img10" href="100000000000010E0000016F90515099.jpg" media-type="image/jpeg"/>
+    <item id="img11" href="100000000000010E00000175CCCB7D95.jpg" media-type="image/jpeg"/>
+    <item id="img12" href="1000000000000160000000EAA72AAD5B.jpg" media-type="image/jpeg"/>
+    <item id="img13" href="10000000000001130000016A74A7CDE3.jpg" media-type="image/jpeg"/>
+    <item id="img14" href="10000000000001130000016839784426.jpg" media-type="image/jpeg"/>
+    <item id="img15" href="10000000000000EB000001957927F557.jpg" media-type="image/jpeg"/>
+    <item id="img16" href="100000000000010E00000174F807E4CE.jpg" media-type="image/jpeg"/>
+    <item id="img17" href="100000000000010E000001746DB10D88.jpg" media-type="image/jpeg"/>
+    <item id="img18" href="100000000000015E00000100271A885C.jpg" media-type="image/jpeg"/>
+    <item id="img19" href="1000000000000160000000E13B6AB026.jpg" media-type="image/jpeg"/>
+    <item id="img20" href="1000000000000113000001635BE8E4E2.jpg" media-type="image/jpeg"/>
+    <item id="img21" href="100000000000011300000167DE392718.jpg" media-type="image/jpeg"/>
+    <item id="img22" href="100000000000010900000174FDB1349E.jpg" media-type="image/jpeg"/>
+    <item id="img23" href="1000000000000160000000E99FB768E2.jpg" media-type="image/jpeg"/>
+    <item id="img24" href="100000000000010E000001748D9B98B4.jpg" media-type="image/jpeg"/>
+    <item id="img25" href="100000000000011500000161AE622FC7.jpg" media-type="image/jpeg"/>
+    <item id="img26" href="100000000000012200000152C80ACE31.jpg" media-type="image/jpeg"/>
+    <item id="img27" href="100000000000011300000169C34E775B.jpg" media-type="image/jpeg"/>
+    <item id="img28" href="100000000000010E0000016C67F6AD8C.jpg" media-type="image/jpeg"/>
+    <item id="img29" href="100000000000015E000000520EA71B46.jpg" media-type="image/jpeg"/>
+    <item id="ch1" href="cover.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch2" href="book_0000.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch3" href="book_0001.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch4" href="book_0002.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch5" href="book_0003.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch6" href="book_0004.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch7" href="book_0005.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch8" href="book_0006.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch9" href="book_0007.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch10" href="book_0008.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch11" href="book_0009.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch12" href="book_0010.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch13" href="book_0011.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch14" href="book_0012.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch15" href="book_0013.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch16" href="book_0014.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch17" href="book_0015.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch18" href="book_0016.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch19" href="book_0017.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch20" href="book_0018.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="ch1"/>
+    <itemref idref="ch2"/>
+    <itemref idref="ch3"/>
+    <itemref idref="ch4"/>
+    <itemref idref="ch5"/>
+    <itemref idref="ch6"/>
+    <itemref idref="ch7"/>
+    <itemref idref="ch8"/>
+    <itemref idref="ch9"/>
+    <itemref idref="ch10"/>
+    <itemref idref="ch11"/>
+    <itemref idref="ch12"/>
+    <itemref idref="ch13"/>
+    <itemref idref="ch14"/>
+    <itemref idref="ch15"/>
+    <itemref idref="ch16"/>
+    <itemref idref="ch17"/>
+    <itemref idref="ch18"/>
+    <itemref idref="ch19"/>
+    <itemref idref="ch20"/>
+  </spine>
+  <guide>
+    <reference href="cover.xhtml" type="cover" title="Couverture"/>
+  </guide>
+</package>
