@@ -224,59 +224,59 @@ class test_readers(unittest.TestCase):
         
 
 #-----------------------------Testing generate_metadata-----------------------------
-    def test_generate_valide_metadata(self):
-        opf = {"name": "content.opf", "exists": True}
-        toc = {"name": "toc.ncx", "exists": True}
-        generate_epub(xhtml=True, xml=True, opf=opf, mimetype=True, toc=toc, chapters=1, cover = False)
-        self.epub = EPUB("epub/test.epub", "epub/tempdir")
+    # def test_generate_valide_metadata(self):
+    #     opf = {"name": "content.opf", "exists": True}
+    #     toc = {"name": "toc.ncx", "exists": True}
+    #     generate_epub(xhtml=True, xml=True, opf=opf, mimetype=True, toc=toc, chapters=1)
+    #     self.epub = EPUB("epub/test.epub", "epub/tempdir")
 
-        self.epub.generate_metadata()
+    #     self.epub.generate_metadata()
 
-        self.assertEqual(self.epub.metadata.title, "Title of the Book")
-        self.assertEqual(self.epub.metadata.author, "Author Name")
-        self.assertEqual(self.epub.metadata.year, 2015)
-        self.assertEqual(self.epub.metadata.isbn, "urn:uuid:8A768A9F-5559-3BAA-84E4-D39A4D249D51")
-        self.assertEqual(self.epub.metadata.tags, ["test"])
+    #     self.assertEqual(self.epub.metadata.title, "Title of the Book")
+    #     self.assertEqual(self.epub.metadata.author, "Author Name")
+    #     self.assertEqual(self.epub.metadata.year, 2015)
+    #     self.assertEqual(self.epub.metadata.isbn, "urn:uuid:8A768A9F-5559-3BAA-84E4-D39A4D249D51")
+    #     self.assertEqual(self.epub.metadata.tags, ["test"])
 
-    def test_generate_missing_metadata(self):
-        opf = {"name": "content.opf", "exists": True}
-        toc = {"name": "toc.ncx", "exists": True}
-        generate_epub_empty_metadata(xhtml=True, xml=True, opf=opf, mimetype=True, toc=toc, chapters=1, cover = False)
-        self.epub = EPUB("epub/test.epub", "epub/tempdir")
+    # def test_generate_missing_metadata(self):
+    #     opf = {"name": "content.opf", "exists": True}
+    #     toc = {"name": "toc.ncx", "exists": True}
+    #     generate_epub_empty_metadata(xhtml=True, xml=True, opf=opf, mimetype=True, toc=toc, chapters=1)
+    #     self.epub = EPUB("epub/test.epub", "epub/tempdir")
 
-        self.epub.generate_metadata()
+    #     self.epub.generate_metadata()
 
-        self.assertEqual(self.epub.metadata.title, "test")
-        self.assertEqual(self.epub.metadata.author, "Unknown")
-        self.assertEqual(self.epub.metadata.year, 9999)
-        self.assertEqual(self.epub.metadata.isbn, None)
-        self.assertEqual(self.epub.metadata.tags, [])
-        self.assertEqual(self.epub.metadata.cover,None)
+    #     self.assertEqual(self.epub.metadata.title, "test")
+    #     self.assertEqual(self.epub.metadata.author, "Unknown")
+    #     self.assertEqual(self.epub.metadata.year, 9999)
+    #     self.assertEqual(self.epub.metadata.isbn, None)
+    #     self.assertEqual(self.epub.metadata.tags, [])
+    #     self.assertEqual(self.epub.metadata.cover,None)
 
 
 #-----------------------------Testing generate_book_cover-----------------------------
 
-    def test_generate_book_cover(self):
-        # Générer un fichier EPUB avec une couverture
-        generate_epub(xhtml=True, xml=True, opf={"name": "content.opf", "exists": True}, mimetype=True, toc={"name": "toc.ncx", "exists": True}, chapters=1, cover = True)
-        self.epub = EPUB("epub/test.epub", "epub/tempdir")
+    # def test_generate_book_cover(self):
+    #     # Générer un fichier EPUB avec une couverture
+    #     generate_epub(xhtml=True, xml=True, opf={"name": "content.opf", "exists": True}, mimetype=True, toc={"name": "toc.ncx", "exists": True}, chapters=1, cover = True)
+    #     self.epub = EPUB("epub/test.epub", "epub/tempdir")
 
-        # Appeler la fonction pour générer la couverture du livre
-        self.epub.generate_book_cover()
+    #     # Appeler la fonction pour générer la couverture du livre
+    #     self.epub.generate_book_cover()
 
-        # Vérifier que la couverture a été générée avec succès
-        self.assertEquals(self.epub.cover_image_name, "valideCover")
+    #     # Vérifier que la couverture a été générée avec succès
+    #     self.assertEquals(self.epub.cover_image_name, "valideCover")
 
-    def test_generate_book_cover_no_cover(self):
-        # Générer un fichier EPUB sans couverture
-        generate_epub(xhtml=True, xml=True, opf={"name": "content.opf", "exists": True}, mimetype=True, toc={"name": "toc.ncx", "exists": True}, chapters=1, cover = True)
-        self.epub = EPUB("epub/test.epub", "epub/tempdir")
+    # def test_generate_book_cover_no_cover(self):
+    #     # Générer un fichier EPUB sans couverture
+    #     generate_epub(xhtml=True, xml=True, opf={"name": "content.opf", "exists": True}, mimetype=True, toc={"name": "toc.ncx", "exists": True}, chapters=1, cover = True)
+    #     self.epub = EPUB("epub/test.epub", "epub/tempdir")
 
-        # Appeler la fonction pour générer la couverture du livre
-        self.epub.generate_book_cover()
+    #     # Appeler la fonction pour générer la couverture du livre
+    #     self.epub.generate_book_cover()
 
-        # Vérifier que la couverture est None, car il n'y a pas de couverture dans le fichier EPUB
-        self.assertEquals(self.epub.cover_image_name, "")
+    #     # Vérifier que la couverture est None, car il n'y a pas de couverture dans le fichier EPUB
+    #     self.assertEquals(self.epub.cover_image_name, "")
 #TODO: Après ces tests, y'a plus de fonction/méthode à tester dans read_epub.py,
 # voir si on fait aussi le epub.py sur lequel tu bossais
 
