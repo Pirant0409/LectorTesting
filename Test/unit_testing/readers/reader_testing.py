@@ -135,6 +135,24 @@ class test_readers(unittest.TestCase):
         self.assertEqual(self.epub.content,[[1, 'Chapter 1', 'chapter1.xhtml#section1']])
         
 
+    def test_epub_generate_toc_multiple_chapters_multiple_sections(self):
+        xhtml = {"exists":True,"is_empty":False,"sections":3}            
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=3, cover = False)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+    
+        self.epub.generate_toc()
+        self.assertEqual(self.epub.content,[[1, 'Chapter 1', 'chapter1.xhtml#section1'],
+                                            [1, 'Chapter 1', 'chapter1.xhtml#section2'],
+                                            [1, 'Chapter 1', 'chapter1.xhtml#section3'], 
+                                            [1, 'Chapter 2', 'chapter2.xhtml#section1'],
+                                            [1, 'Chapter 2', 'chapter2.xhtml#section2'],
+                                            [1, 'Chapter 2', 'chapter2.xhtml#section3'],
+                                            [1, 'Chapter 3', 'chapter3.xhtml#section1'],
+                                            [1, 'Chapter 3', 'chapter3.xhtml#section2'],
+                                            [1, 'Chapter 3', 'chapter3.xhtml#section3']])
+
 #-----------------------------Testing get_chapter_content-----------------------------
 
     def test_epub_get_chapter_content_not_found(self):
