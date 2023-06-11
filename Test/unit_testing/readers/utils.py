@@ -271,7 +271,7 @@ def generate_toc(toc,chapters):
 
 def getValideCover():
     
-    cover_path = "Test/unit_testing/cover/cover.jpg"  # Chemin du fichier valideCover.png
+    cover_path = "../cover/cover.jpg"  # Chemin du fichier valideCover.png
          # Copie le fichier valideCover.png dans le dossier epub
     shutil.copy(cover_path, 'epub/cover.jpg')
     
