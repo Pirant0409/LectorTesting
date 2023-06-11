@@ -22,7 +22,7 @@ class test_readers(unittest.TestCase):
 #-----------------------------Testing generate_references-----------------------------
     def test_read_valid_epub(self):
 
-        xhtml = {"exists":True,"is_empty":False}
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf = opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -34,7 +34,7 @@ class test_readers(unittest.TestCase):
 
     def test_epub_one_missing(self):
 
-        xhtml = {"exists":False,"is_empty":False}
+        xhtml = {"exists":False,"is_empty":False,"sections":1}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -46,7 +46,7 @@ class test_readers(unittest.TestCase):
     
     def test_epub_no_opf(self):
 
-        xhtml = {"exists":True,"is_empty":False}
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
         opf = {"name":"content.opf","exists":False}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -56,7 +56,7 @@ class test_readers(unittest.TestCase):
 
     def test_epub_opf_uncommon_name(self):
             
-            xhtml = {"exists":True,"is_empty":False}
+            xhtml = {"exists":True,"is_empty":False,"sections":1}
             opf = {"name":"contenu.opf","exists":True}
             toc = {"name":"toc.ncx","exists":True}
             generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -68,7 +68,7 @@ class test_readers(unittest.TestCase):
 #-----------------------------Testing find_file-----------------------------
     def test_epub_find_file_root(self):
 
-        xhtml = {"exists":True,"is_empty":False}     
+        xhtml = {"exists":True,"is_empty":False,"sections":1}     
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -79,7 +79,7 @@ class test_readers(unittest.TestCase):
 
     def test_epub_find_file_subdir(self):
 
-        xhtml = {"exists":True,"is_empty":False}
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -90,7 +90,7 @@ class test_readers(unittest.TestCase):
     
     def test_epub_find_file_not_found(self):
         
-        xhtml = {"exists":True,"is_empty":False}
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=False,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -103,43 +103,43 @@ class test_readers(unittest.TestCase):
 #-----------------------------Testing generate_toc-----------------------------
     def test_epub_generate_toc_one_chapter(self):
         
-        xhtml = {"exists":True,"is_empty":False}
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
         self.epub = EPUB("epub/test.epub","epub/tempdir")
 
         self.epub.generate_toc()
-        self.assertEqual(self.epub.content,[[1, 'Chapter 1', 'chapter1.xhtml']])
+        self.assertEqual(self.epub.content,[[1, 'Chapter 1', 'chapter1.xhtml#section1']])
 
     def test_epub_generate_toc_multiple_chapters(self):
 
-        xhtml = {"exists":True,"is_empty":False}            
+        xhtml = {"exists":True,"is_empty":False,"sections":1}            
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=3, cover = False)
         self.epub = EPUB("epub/test.epub","epub/tempdir")
     
         self.epub.generate_toc()
-        self.assertEqual(self.epub.content,[[1, 'Chapter 1', 'chapter1.xhtml'], [1, 'Chapter 2', 'chapter2.xhtml'], [1, 'Chapter 3', 'chapter3.xhtml']])
+        self.assertEqual(self.epub.content,[[1, 'Chapter 1', 'chapter1.xhtml#section1'], [1, 'Chapter 2', 'chapter2.xhtml#section1'], [1, 'Chapter 3', 'chapter3.xhtml#section1']])
 
     def test_epub_generate_toc_uncommon_name(self):
 
-        xhtml = {"exists":True,"is_empty":False}
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"tableoc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
         self.epub = EPUB("epub/test.epub","epub/tempdir")
 
         self.epub.generate_toc()
-        self.assertEqual(self.epub.content,[[1, 'Chapter 1', 'chapter1.xhtml']])
+        self.assertEqual(self.epub.content,[[1, 'Chapter 1', 'chapter1.xhtml#section1']])
         
 
 #-----------------------------Testing get_chapter_content-----------------------------
 
     def test_epub_get_chapter_content_not_found(self):
 
-        xhtml = {"exists":False,"is_empty":False} 
+        xhtml = {"exists":False,"is_empty":False,"sections":1} 
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -150,7 +150,7 @@ class test_readers(unittest.TestCase):
 
     def test_epub_get_chapter_content_found_not_empty(self):
 
-        xhtml={"exists":True,"is_empty":False} 
+        xhtml={"exists":True,"is_empty":False,"sections":1} 
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -162,7 +162,7 @@ class test_readers(unittest.TestCase):
 
     def test_epub_get_chapter_content_found_empty(self):
 
-        xhtml={"exists":True,"is_empty":True} 
+        xhtml={"exists":True,"is_empty":True,"sections":1} 
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -177,7 +177,7 @@ class test_readers(unittest.TestCase):
 
     def test_epub_parse_split_chapters_none(self):
         
-        xhtml={"exists":True,"is_empty":False}
+        xhtml={"exists":True,"is_empty":False,"sections":1}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -188,9 +188,9 @@ class test_readers(unittest.TestCase):
         
         self.assertEqual(self.epub.split_chapters,{})
     
-    def test_epub_parse_split_chapters_one_section_none(self):
+    def test_epub_parse_split_chapters_one_section_one_chapter(self):
         
-        xhtml = {"exists":True,"is_empty":False}
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -198,10 +198,88 @@ class test_readers(unittest.TestCase):
 
         chapters_with_split_content = {"chapter1.xhtml":["section1"]}
         self.epub.parse_split_chapters(chapters_with_split_content)
-        #TODO: l'assert n'est pas finie, je dois comprendre comment fonctionne la
-        # méthode avec ce BeautifulSoup de mort pour savoir ce qu'il va retourner
+        expected_result = {'chapter1.xhtml': {'section1':'<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n', 
+                                              'top_level': '<?xml version="1.0" encoding="UTF-8"?><html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<title>chapitrelol</title>\n</head>\n<body>\n</body></html>'
+                                              }
+                            }
+        self.assertEqual(self.epub.split_chapters,expected_result)
+
+
+
+    def test_epub_parse_split_chapters_one_section_multiple_chapters(self):
+
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=3, cover = False)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+
+        chapters_with_split_content = {"chapter1.xhtml":["section1"],"chapter2.xhtml":["section1"],"chapter3.xhtml":["section1"]}
+        self.epub.parse_split_chapters(chapters_with_split_content)
+        expected_result = {'chapter1.xhtml': {'section1':'<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n',
+                                                'top_level': '<?xml version="1.0" encoding="UTF-8"?><html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<title>chapitrelol</title>\n</head>\n<body>\n</body></html>'
+                                                },
+                            'chapter2.xhtml': {'section1':'<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n',
+                                                'top_level': '<?xml version="1.0" encoding="UTF-8"?><html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<title>chapitrelol</title>\n</head>\n<body>\n</body></html>'
+                                                },
+                            'chapter3.xhtml': {'section1':'<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n',
+                                                'top_level': '<?xml version="1.0" encoding="UTF-8"?><html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<title>chapitrelol</title>\n</head>\n<body>\n</body></html>'
+                                                }
+                            }
+        self.assertEqual(self.epub.split_chapters,expected_result)
+
+
+
+    def test_epub_parse_split_chapters_multiple_sections_one_chapter(self):
+
+        xhtml = {"exists":True,"is_empty":False,"sections":3}
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+
+        chapters_with_split_content = {"chapter1.xhtml":["section1","section2","section3"]}
+        self.epub.parse_split_chapters(chapters_with_split_content)
+        expected_result = {'chapter1.xhtml': {'section3':'<html><body><section id="section3">\n<h1>Section 3</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n',
+                                                'section2':'<html><body><section id="section2">\n<h1>Section 2</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>',
+                                                'section1':'<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>',
+                                                'top_level': '<?xml version="1.0" encoding="UTF-8"?><html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<title>chapitrelol</title>\n</head>\n<body>\n</body></html>'
+                                                }
+                            }
+       
+        self.assertEqual(self.epub.split_chapters,expected_result)
+
         
-        # self.assertEqual(self.epub.split_chapters,{})
+    def test_epub_parse_split_chapters_multiple_sections_multiple_chapters(self):
+
+        xhtml = {"exists":True,"is_empty":False,"sections":3}
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=3, cover = False)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+
+        chapters_with_split_content = {"chapter1.xhtml":["section1","section2","section3"],"chapter2.xhtml":["section1","section2","section3"],"chapter3.xhtml":["section1","section2","section3"]}
+        self.epub.parse_split_chapters(chapters_with_split_content)
+        expected_result = {'chapter1.xhtml': {'section3':'<html><body><section id="section3">\n<h1>Section 3</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n',
+                                                'section2':'<html><body><section id="section2">\n<h1>Section 2</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>',
+                                                'section1':'<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>',
+                                                'top_level': '<?xml version="1.0" encoding="UTF-8"?><html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<title>chapitrelol</title>\n</head>\n<body>\n</body></html>'
+                                                },
+                            'chapter2.xhtml': {'section3':'<html><body><section id="section3">\n<h1>Section 3</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n',
+                                                'section2':'<html><body><section id="section2">\n<h1>Section 2</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>',
+                                                'section1':'<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>',
+                                                'top_level': '<?xml version="1.0" encoding="UTF-8"?><html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<title>chapitrelol</title>\n</head>\n<body>\n</body></html>'
+                                                },
+                            'chapter3.xhtml': {'section3':'<html><body><section id="section3">\n<h1>Section 3</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n',
+                                                'section2':'<html><body><section id="section2">\n<h1>Section 2</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>',
+                                                'section1':'<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>',
+                                                'top_level': '<?xml version="1.0" encoding="UTF-8"?><html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<title>chapitrelol</title>\n</head>\n<body>\n</body></html>'
+                                                }
+                            }
+        
+        self.assertEqual(self.epub.split_chapters,expected_result)
+
+        
 
         #TODO: je vais surement devoir rebouger au utils.py pour pouvoir créer 
         # des chapitre avec des sections
@@ -211,7 +289,7 @@ class test_readers(unittest.TestCase):
 
     # def test_epub_generate_content_one_chapter(self):
     
-    #     xhtml = {"exists":True,"is_empty":False}
+    #     xhtml = {"exists":True,"is_empty":False,"sections":1}
     #     opf = {"name":"content.opf","exists":True}
     #     toc = {"name":"toc.ncx","exists":True}
     #     generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
@@ -223,7 +301,7 @@ class test_readers(unittest.TestCase):
 #-----------------------------Testing generate_metadata-----------------------------
     def test_generate_valide_metadata(self):
 
-        xhtml = {"exists":True,"is_empty":False}
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
         opf = {"name": "content.opf", "exists": True}
         toc = {"name": "toc.ncx", "exists": True}
         generate_epub(xhtml=xhtml, xml=True, opf=opf, mimetype=True, toc=toc, chapters=1, cover = True)
@@ -239,10 +317,9 @@ class test_readers(unittest.TestCase):
 
     def test_generate_missing_metadata(self):
 
-        xhtml = {"exists":True,"is_empty":False}
         opf = {"name": "content.opf", "exists": True}
         toc = {"name": "toc.ncx", "exists": True}
-        generate_epub_empty_metadata(xhtml=xhtml, xml=True, opf=opf, mimetype=True, toc=toc, chapters=1, cover = True)
+        generate_epub_empty_metadata(xhtml=True, xml=True, opf=opf, mimetype=True, toc=toc, chapters=1, cover = True)
         self.epub = EPUB("epub/test.epub", "epub/tempdir")
 
         self.epub.generate_metadata()
@@ -259,7 +336,7 @@ class test_readers(unittest.TestCase):
 
     def test_generate_book_cover(self):
         # Générer un fichier EPUB avec une couverture
-        xhtml = {"exists":True,"is_empty":False}
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
         generate_epub(xhtml=xhtml, xml=True, opf={"name": "content.opf", "exists": True}, mimetype=True, toc={"name": "toc.ncx", "exists": True}, chapters=1, cover = True)
         self.epub = EPUB("epub/test.epub", "epub/tempdir")
 
@@ -271,7 +348,7 @@ class test_readers(unittest.TestCase):
 
     def test_generate_book_cover_no_cover(self):
         # Générer un fichier EPUB sans couverture
-        xhtml = {"exists":True,"is_empty":False}
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
         generate_epub(xhtml=xhtml, xml=True, opf={"name": "content.opf", "exists": True}, mimetype=True, toc={"name": "toc.ncx", "exists": True}, chapters=1, cover = False)
         self.epub = EPUB("epub/test.epub", "epub/tempdir")
 
