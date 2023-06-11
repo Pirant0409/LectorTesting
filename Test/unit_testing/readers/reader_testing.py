@@ -189,6 +189,18 @@ class test_readers(unittest.TestCase):
         result = self.epub.get_chapter_content("chapter1.xhtml")
         self.assertIsNone(result)
 
+
+    def test_epub_get_chapter_content_not_html(self):
+
+        xhtml={"exists":True,"is_empty":True,"sections":1} 
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+
+        with self.assertRaises(TypeError):
+            self.epub.get_chapter_content("content.opf")
+
     #TODO: Tester avec des fichiers qui ne sont pas des html ?
 
 #-----------------------------Testing parse_split_chapters-----------------------------
@@ -297,24 +309,92 @@ class test_readers(unittest.TestCase):
         
         self.assertEqual(self.epub.split_chapters,expected_result)
 
-        
-
-        #TODO: je vais surement devoir rebouger au utils.py pour pouvoir créer 
-        # des chapitre avec des sections
-
 
 #-----------------------------Testing generate_content-----------------------------
 
-    # def test_epub_generate_content_one_chapter(self):
+    def test_epub_generate_content_one_chapter_one_section(self):
     
-    #     xhtml = {"exists":True,"is_empty":False,"sections":1}
-    #     opf = {"name":"content.opf","exists":True}
-    #     toc = {"name":"toc.ncx","exists":True}
-    #     generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
-    #     self.epub = EPUB("epub/test.epub","epub/tempdir")
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
 
-    #     self.epub.generate_content()
+        self.epub.generate_toc()
+        self.epub.generate_content()
+
+        self.assertEqual(self.epub.content,[(1,'Chapter 1', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n')])
         
+
+    def test_epub_generate_content_one_chapter_multiple_sections(self):
+
+        xhtml = {"exists":True,"is_empty":False,"sections":3}
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+
+        self.epub.generate_toc()
+        self.epub.generate_content()
+
+        print(self.epub.content)
+        self.assertEqual(self.epub.content,[(1,'Chapter 1', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
+                                            (1,'Chapter 1', '<html><body><section id="section2">\n<h1>Section 2</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
+                                            (1,'Chapter 1', '<html><body><section id="section3">\n<h1>Section 3</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n')])
+        
+
+    def test_epub_generate_content_multiple_chapters_one_section(self):
+
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=3, cover = False)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+
+        self.epub.generate_toc()
+        self.epub.generate_content()
+
+        print(self.epub.content)
+        self.assertEqual(self.epub.content,[(1,'Chapter 1', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n'),
+                                            (1,'Chapter 2', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n'),
+                                            (1,'Chapter 3', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n')])
+        
+    def test_epub_generate_content_multiple_chapters_multiple_sections(self):
+
+        xhtml = {"exists":True,"is_empty":False,"sections":3}
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=3, cover = False)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+
+        self.epub.generate_toc()
+        self.epub.generate_content()
+
+        print(self.epub.content)
+        self.assertEqual(self.epub.content,[(1,'Chapter 1', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
+                                            (1,'Chapter 1', '<html><body><section id="section2">\n<h1>Section 2</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
+                                            (1,'Chapter 1', '<html><body><section id="section3">\n<h1>Section 3</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n'),
+                                            (1,'Chapter 2', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
+                                            (1,'Chapter 2', '<html><body><section id="section2">\n<h1>Section 2</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
+                                            (1,'Chapter 2', '<html><body><section id="section3">\n<h1>Section 3</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n'),
+                                            (1,'Chapter 3', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
+                                            (1,'Chapter 3', '<html><body><section id="section2">\n<h1>Section 2</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
+                                            (1,'Chapter 3', '<html><body><section id="section3">\n<h1>Section 3</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n')])
+
+    def test_epub_generate_content_with_cover(self):
+
+        xhtml = {"exists":True,"is_empty":False,"sections":1}
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+
+        self.epub.generate_toc()
+        self.epub.generate_book_cover()
+        self.epub.generate_content()
+
+        cover_path = "epub/tempdir\\test.epub - cover"
+        self.assertEqual(self.epub.content,[(1,'Cover', f'<center><img src="{cover_path}" alt="Cover"></center>'),(1,'Chapter 1', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n')])
 
 #-----------------------------Testing generate_metadata-----------------------------
     def test_generate_valide_metadata(self):
@@ -337,7 +417,7 @@ class test_readers(unittest.TestCase):
 
         opf = {"name": "content.opf", "exists": True}
         toc = {"name": "toc.ncx", "exists": True}
-        generate_epub_empty_metadata(xhtml=True, xml=True, opf=opf, mimetype=True, toc=toc, chapters=1, cover = True)
+        generate_epub_empty_metadata(xhtml=True, xml=True, opf=opf, mimetype=True, toc=toc, chapters=1, cover = False)
         self.epub = EPUB("epub/test.epub", "epub/tempdir")
 
         self.epub.generate_metadata()
@@ -347,6 +427,7 @@ class test_readers(unittest.TestCase):
         self.assertEqual(self.epub.metadata.year, 9999)
         self.assertEqual(self.epub.metadata.isbn, None)
         self.assertEqual(self.epub.metadata.tags, [])
+        self.assertEqual(self.epub.metadata.cover, None)
         
 
 
@@ -376,8 +457,6 @@ class test_readers(unittest.TestCase):
         # Vérifier que la couverture est "", car il n'y a pas de couverture dans le fichier EPUB
         self.assertEqual(self.epub.cover_image_name, "")
 
-#TODO: Après ces tests, y'a plus de fonction/méthode à tester dans read_epub.py,
-# voir si on fait aussi le epub.py sur lequel tu bossais
 
 
 if __name__ == "__main__":
