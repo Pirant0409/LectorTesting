@@ -1,6 +1,7 @@
 import os, zipfile
 import shutil
-
+import logging
+logger = logging.getLogger(__name__)
 # Generate epub file
 def generate_epub(xhtml,xml,opf,mimetype,toc,chapters, cover):
     print("Generating epub file...")
@@ -30,8 +31,11 @@ def generate_epub(xhtml,xml,opf,mimetype,toc,chapters, cover):
     if not os.path.exists('epub/'+toc["name"]) and toc["exists"]:
         generate_toc(toc,chapters)
         epub_file.write('epub/'+ toc["name"],"OPS/"+toc["name"])
-    # if not os.path.exists('epub/valideCover.png') and cover:
-    #     getValideCover()
+    if not os.path.exists('epub/cover.jpg') and cover:
+        getValideCover()
+        epub_file.write('epub/cover.jpg', compress_type=zipfile.ZIP_STORED)
+
+
 
     
     epub_file.close()
@@ -68,7 +72,7 @@ def generate_epub_empty_xhtml(xhtml,xml,opf,mimetype,toc,chapters):
     
     epub_file.close()
 
-def generate_epub_empty_metadata(xhtml,xml,opf,mimetype,toc,chapters):
+def generate_epub_empty_metadata(xhtml,xml,opf,mimetype,toc,chapters,cover):
     print("Generating epub file...")
     if not os.path.exists('epub'):
         os.makedirs('epub')
@@ -96,6 +100,9 @@ def generate_epub_empty_metadata(xhtml,xml,opf,mimetype,toc,chapters):
     if not os.path.exists('epub/'+toc["name"]) and toc["exists"]:
         generate_toc(toc,chapters)
         epub_file.write('epub/'+ toc["name"],"OPS/"+toc["name"])
+    if not os.path.exists('epub/cover.jpg') and cover:
+        getValideCover()
+        epub_file.write('epub/cover.jpg', compress_type=zipfile.ZIP_STORED)
 
     
     epub_file.close()
@@ -153,6 +160,7 @@ def generate_opf(opf,toc,chapters):
         </metadata>
         <manifest>
             <item id="ncx" href="{toc["name"]}" media-type="application/x-dtbncx+xml"/>
+            <item id="cover" href="cover.jpg" media-type="image/jpeg"/>
     '''
 
     for i in range(1, chapters + 1):
@@ -257,15 +265,11 @@ def generate_toc(toc,chapters):
     with open("epub/"+toc["name"], 'w', encoding='utf-8') as file:
         file.write(toc_content)
 
-# def getValideCover():
+def getValideCover():
     
-#      cover_path = "Test/Cover/valideCover.jpg"  # Chemin du fichier valideCover.png
-
-#      if os.path.exists(cover_path):
-#          # Copie le fichier valideCover.png dans le dossier epub
-#          shutil.copy(cover_path, 'epub/valideCover.jpg')
-#          print("Valide cover added to epub folder.")
-#      else:
-#          print("Valide cover file not found.")
+    cover_path = "Test/unit_testing/cover/cover.jpg"  # Chemin du fichier valideCover.png
+         # Copie le fichier valideCover.png dans le dossier epub
+    shutil.copy(cover_path, 'epub/cover.jpg')
+    
 
 
