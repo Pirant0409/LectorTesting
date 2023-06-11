@@ -11,8 +11,12 @@ def generate_epub(xhtml,xml,opf,mimetype,toc,chapters, cover):
     epub_file = zipfile.ZipFile('epub/test.epub', 'w',zipfile.ZIP_DEFLATED)
 
 
-    if not os.path.exists('epub/chapter1.xhtml') and xhtml:
-        generate_xhtml(chapters)
+    if not os.path.exists('epub/chapter1.xhtml') and xhtml["exists"]:
+        if xhtml["is_empty"]:
+            generate_empty_xhtml(chapters)
+        else:
+            generate_xhtml(chapters)
+
         for i in range(1, chapters+1):
             epub_file.write('epub/chapter'+str(i)+'.xhtml',"OPS/chapter"+str(i)+".xhtml")
 

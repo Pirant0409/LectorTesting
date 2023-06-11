@@ -1,9 +1,10 @@
 import unittest
 import os, shutil
 from lector.readers.read_epub import EPUB
-from utils import generate_epub, generate_epub_empty_xhtml, generate_epub_empty_metadata
+from utils import generate_epub, generate_epub_empty_metadata
 
 class test_readers(unittest.TestCase):
+
     def setUp(self):
         # On supprime les fichiers généré entre chaque test
         for filename in os.listdir("epub"):
@@ -15,12 +16,16 @@ class test_readers(unittest.TestCase):
         if not os.path.exists("epub/tempdir"):
             os.makedirs("epub/tempdir")
 
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+
     def tearDown(self):
         # on initialise les variables à None pour éviter les erreurs lors de la suppression
         self.epub = None
 #-----------------------------Testing generate_references-----------------------------
     def test_read_valid_epub(self):
 
+        xhtml = {"exists":True,"is_empty":False}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=True,xml=True,opf = opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -32,6 +37,7 @@ class test_readers(unittest.TestCase):
 
     def test_epub_one_missing(self):
 
+        xhtml = {"exists":False,"is_empty":False}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=False,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -43,6 +49,7 @@ class test_readers(unittest.TestCase):
     
     def test_epub_no_opf(self):
 
+        xhtml = {"exists":True,"is_empty":False}
         opf = {"name":"content.opf","exists":False}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -52,6 +59,7 @@ class test_readers(unittest.TestCase):
 
     def test_epub_opf_uncommon_name(self):
             
+            xhtml = {"exists":True,"is_empty":False}
             opf = {"name":"contenu.opf","exists":True}
             toc = {"name":"toc.ncx","exists":True}
             generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -62,17 +70,19 @@ class test_readers(unittest.TestCase):
 
 #-----------------------------Testing find_file-----------------------------
     def test_epub_find_file_root(self):
-             
-            opf = {"name":"content.opf","exists":True}
-            toc = {"name":"toc.ncx","exists":True}
-            generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
-            self.epub = EPUB("epub/test.epub","epub/tempdir")
-    
-            filename = self.epub.find_file("mimetype")
-            self.assertEqual(filename,"epub/mimetype")
+
+        xhtml = {"exists":True,"is_empty":False}     
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+
+        filename = self.epub.find_file("mimetype")
+        self.assertEqual(filename,"epub/mimetype")
 
     def test_epub_find_file_subdir(self):
 
+        xhtml = {"exists":True,"is_empty":False}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -82,19 +92,21 @@ class test_readers(unittest.TestCase):
         self.assertEqual(filename,"OPS/content.opf")
     
     def test_epub_find_file_not_found(self):
-            
-            opf = {"name":"content.opf","exists":True}
-            toc = {"name":"toc.ncx","exists":True}
-            generate_epub(xhtml=True,xml=False,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
-            self.epub = EPUB("epub/test.epub","epub/tempdir")
-    
-            filename = self.epub.find_file("container.xml")
-            self.assertNotEqual(filename,"META-INF/container.xml")
+        
+        xhtml = {"exists":True,"is_empty":False}
+        opf = {"name":"content.opf","exists":True}
+        toc = {"name":"toc.ncx","exists":True}
+        generate_epub(xhtml=xhtml,xml=False,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
+        self.epub = EPUB("epub/test.epub","epub/tempdir")
+
+        filename = self.epub.find_file("container.xml")
+        self.assertNotEqual(filename,"META-INF/container.xml")
     
 
 #-----------------------------Testing generate_toc-----------------------------
     def test_epub_generate_toc_one_chapter(self):
-                
+        
+        xhtml = {"exists":True,"is_empty":False}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -104,7 +116,8 @@ class test_readers(unittest.TestCase):
         self.assertEqual(self.epub.content,[[1, 'Chapter 1', 'chapter1.xhtml']])
 
     def test_epub_generate_toc_multiple_chapters(self):
-                    
+
+        xhtml = {"exists":True,"is_empty":False}            
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=3, cover = True)
@@ -114,6 +127,8 @@ class test_readers(unittest.TestCase):
         self.assertEqual(self.epub.content,[[1, 'Chapter 1', 'chapter1.xhtml'], [1, 'Chapter 2', 'chapter2.xhtml'], [1, 'Chapter 3', 'chapter3.xhtml']])
 
     def test_epub_generate_toc_uncommon_name(self):
+
+        xhtml = {"exists":True,"is_empty":False}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"tableoc.ncx","exists":True}
         generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -126,7 +141,8 @@ class test_readers(unittest.TestCase):
 #-----------------------------Testing get_chapter_content-----------------------------
 
     def test_epub_get_chapter_content_not_found(self):
-         
+
+        xhtml = {"exists":False,"is_empty":False} 
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=False,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -136,7 +152,8 @@ class test_readers(unittest.TestCase):
         self.assertEqual(result,"Possible parse error: chapter2.xhtml")
 
     def test_epub_get_chapter_content_found_not_empty(self):
-         
+
+        xhtml={"exists":True,"is_empty":False} 
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -147,10 +164,11 @@ class test_readers(unittest.TestCase):
 
 
     def test_epub_get_chapter_content_found_empty(self):
-         
+
+        xhtml={"exists":True,"is_empty":True} 
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
-        generate_epub_empty_xhtml(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1)
+        generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
         self.epub = EPUB("epub/test.epub","epub/tempdir")
 
         result = self.epub.get_chapter_content("chapter1.xhtml")
@@ -162,6 +180,7 @@ class test_readers(unittest.TestCase):
 
     def test_epub_parse_split_chapters_none(self):
         
+        xhtml={"exists":True,"is_empty":False}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -173,7 +192,8 @@ class test_readers(unittest.TestCase):
         self.assertEqual(self.epub.split_chapters,{})
     
     def test_epub_parse_split_chapters_one_section_none(self):
-
+        
+        xhtml = {"exists":True,"is_empty":False}
         opf = {"name":"content.opf","exists":True}
         toc = {"name":"toc.ncx","exists":True}
         generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = True)
@@ -193,10 +213,11 @@ class test_readers(unittest.TestCase):
 #-----------------------------Testing generate_content-----------------------------
 
     # def test_epub_generate_content_one_chapter(self):
-        
+    
+    #     xhtml = {"exists":True,"is_empty":False}
     #     opf = {"name":"content.opf","exists":True}
     #     toc = {"name":"toc.ncx","exists":True}
-    #     generate_epub(xhtml=True,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1)
+    #     generate_epub(xhtml=xhtml,xml=True,opf=opf,mimetype=True,toc=toc,chapters=1, cover = False)
     #     self.epub = EPUB("epub/test.epub","epub/tempdir")
 
     #     self.epub.generate_content()
