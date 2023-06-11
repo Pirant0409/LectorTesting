@@ -337,7 +337,6 @@ class test_readers(unittest.TestCase):
         self.epub.generate_toc()
         self.epub.generate_content()
 
-        print(self.epub.content)
         self.assertEqual(self.epub.content,[(1,'Chapter 1', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
                                             (1,'Chapter 1', '<html><body><section id="section2">\n<h1>Section 2</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
                                             (1,'Chapter 1', '<html><body><section id="section3">\n<h1>Section 3</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n')])
@@ -354,7 +353,6 @@ class test_readers(unittest.TestCase):
         self.epub.generate_toc()
         self.epub.generate_content()
 
-        print(self.epub.content)
         self.assertEqual(self.epub.content,[(1,'Chapter 1', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n'),
                                             (1,'Chapter 2', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n'),
                                             (1,'Chapter 3', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n')])
@@ -370,7 +368,6 @@ class test_readers(unittest.TestCase):
         self.epub.generate_toc()
         self.epub.generate_content()
 
-        print(self.epub.content)
         self.assertEqual(self.epub.content,[(1,'Chapter 1', '<html><body><section id="section1">\n<h1>Section 1</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
                                             (1,'Chapter 1', '<html><body><section id="section2">\n<h1>Section 2</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body></html>'),
                                             (1,'Chapter 1', '<html><body><section id="section3">\n<h1>Section 3</h1>\n<p>This is an example paragraph.</p>\n</section>\n</body>\n</html>\n'),
