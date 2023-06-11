@@ -9,7 +9,7 @@ class test_readers(unittest.TestCase):
         # On supprime les fichiers généré entre chaque test
         for filename in os.listdir("epub"):
             file_path = os.path.join("epub", filename)
-            if os.path.isfile(file_path) and (filename != "test.epub" and filename != "cover.jpg"):
+            if os.path.isfile(file_path) and filename != "test.epub":
                 os.remove(file_path)
 
         # Si on a supprimé tempdir, on le recrée
